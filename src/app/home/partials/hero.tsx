@@ -11,15 +11,16 @@ import { socialMediaData } from '@/constants/social-media-data';
 
 const Hero = () => {
   return (
-    <header className='bg-base-black w-full'>
+    <header className='bg-base-black md:custom-container w-full'>
       <div className='relative mx-auto h-209 md:h-315'>
         <Image
           src='/images/bgherogra.png'
           alt='logo'
           width={1440}
           height={1024}
+          sizes='(max-width: 1280px) 100vw, 50vw'
           priority
-          className='absolute bottom-0 left-1/2 min-h-106 -translate-x-1/2'
+          className='absolute bottom-0 left-1/2 min-h-106 w-full -translate-x-1/2 object-cover'
         />
         <Image
           src='/images/Line.png'
@@ -27,7 +28,8 @@ const Hero = () => {
           priority
           width={1440}
           height={865}
-          className='absolute bottom-0 left-1/2 -translate-x-1/2'
+          sizes='(max-width: 1280px) 100vw, 50vw'
+          className='absolute bottom-0 left-1/2 w-full -translate-x-1/2 object-cover'
         />
         <Image
           src='/images/profile.png'
@@ -43,6 +45,7 @@ const Hero = () => {
           priority
           width={1440}
           height={17}
+          sizes='(max-width: 1280px) 100vw, 50vw'
           className='absolute top-200 z-50 w-full md:top-295'
         />
         <div className='custom-container flex w-full flex-wrap pt-34 md:pt-36'>
