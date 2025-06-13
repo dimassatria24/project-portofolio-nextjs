@@ -12,7 +12,7 @@ import { socialMediaData } from '@/constants/social-media-data';
 const Hero = () => {
   return (
     <header className='bg-base-black md:custom-container w-full'>
-      <div className='relative mx-auto h-209 md:h-315'>
+      <div className='relative mx-auto h-190 md:h-315'>
         <Image
           src='/images/bgherogra.png'
           alt='logo'
@@ -20,7 +20,7 @@ const Hero = () => {
           height={1024}
           sizes='(max-width: 1280px) 100vw, 50vw'
           priority
-          className='absolute bottom-0 left-1/2 min-h-106 w-full -translate-x-1/2 object-cover'
+          className='pointer-events-auto absolute bottom-0 left-1/2 min-h-106 w-full -translate-x-1/2 object-cover'
         />
         <Image
           src='/images/Line.png'
@@ -29,7 +29,7 @@ const Hero = () => {
           width={1440}
           height={865}
           sizes='(max-width: 1280px) 100vw, 50vw'
-          className='absolute bottom-0 left-1/2 w-full -translate-x-1/2 object-cover'
+          className='pointer-events-auto absolute bottom-0 left-1/2 w-full -translate-x-1/2 object-cover'
         />
         <Image
           src='/images/profile.png'
@@ -37,7 +37,7 @@ const Hero = () => {
           priority
           width={754}
           height={754}
-          className='absolute bottom-0 left-1/2 min-h-98 -translate-x-1/2 object-cover'
+          className='pointer-events-auto absolute bottom-0 left-1/2 min-h-98 -translate-x-1/2 object-cover'
         />
         <Image
           src='/images/Subtracthero.png'
@@ -46,7 +46,7 @@ const Hero = () => {
           width={1440}
           height={17}
           sizes='(max-width: 1280px) 100vw, 50vw'
-          className='absolute top-200 z-50 w-full md:top-295'
+          className='pointer-events-auto absolute top-180 z-50 w-full md:top-295'
         />
         <div className='custom-container flex w-full flex-wrap pt-34 md:pt-36'>
           <h1 className='md:display-3xl-extrabold display-md-extrabold text-neutral-25 text-left min-md:w-170'>
@@ -59,13 +59,13 @@ const Hero = () => {
             design. Turning ideas into functional beauty
           </p>
         </div>
-        <div className='custom-container flex-between absolute right-0 bottom-10 left-0 w-full md:bottom-40'>
+        <div className='custom-container flex-between pointer-events-auto absolute right-0 bottom-10 left-0 w-full md:bottom-40'>
           <div className='flex gap-4'>
             {socialMediaData.map((icon) => (
               <Link
                 key={icon.alt}
                 href={icon.href}
-                className='flex-center md-size-15 size-12 rounded-full bg-neutral-950/50 p-3'
+                className='flex-center md-size-15 pointer-events-auto size-12 rounded-full bg-neutral-950/50 p-3'
               >
                 <Image
                   src={icon.src}
@@ -73,7 +73,7 @@ const Hero = () => {
                   property='lazy'
                   width={icon.width}
                   height={icon.height}
-                  className='h-full w-auto'
+                  className='pointer-events-auto h-full w-auto'
                   priority={false}
                 />
               </Link>
