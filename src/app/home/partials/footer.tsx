@@ -16,14 +16,12 @@ const Footer = () => {
           alt='Pattern 1'
           width={441}
           height={426}
-          loading='lazy'
           className='object-cover'
           priority
         />
         <Image
           src='/images/Pattern.png'
           alt='Pattern 2'
-          loading='lazy'
           width={441}
           height={426}
           className='object-cover'

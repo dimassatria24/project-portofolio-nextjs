@@ -18,7 +18,6 @@ const Hero = () => {
           alt='logo'
           width={1440}
           height={1024}
-          sizes='(max-width: 1280px) 100vw, 50vw'
           priority
           className='absolute bottom-0 left-1/2 min-h-106 -translate-x-1/2'
         />
@@ -28,7 +27,6 @@ const Hero = () => {
           priority
           width={1440}
           height={865}
-          sizes='(max-width: 1280px) 100vw, 50vw'
           className='absolute bottom-0 left-1/2 -translate-x-1/2'
         />
         <Image
@@ -37,7 +35,6 @@ const Hero = () => {
           priority
           width={754}
           height={754}
-          sizes='(max-width: 768px) 100vw, 50vw'
           className='absolute bottom-0 left-1/2 min-h-98 -translate-x-1/2 object-cover'
         />
         <Image
@@ -46,7 +43,6 @@ const Hero = () => {
           priority
           width={1440}
           height={17}
-          sizes='(max-width: 1280px) 100vw, 50vw'
           className='absolute top-200 z-50 w-full md:top-295'
         />
         <div className='custom-container flex w-full flex-wrap pt-34 md:pt-36'>
