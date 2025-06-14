@@ -5,6 +5,7 @@ import {
   aboutmeProjectCardData,
   AboutmeProjectCards,
 } from '@/components/ui/aboutmeProjectCard';
+import CountUp from '@/components/ui/CountUp';
 
 const AboutMe = () => {
   return (
@@ -80,51 +81,70 @@ const statistics: Statistic[] = [
 
 export const Statistics = () => {
   return (
-    <div className='flex flex-wrap items-center justify-center gap-6 py-10 md:justify-evenly lg:justify-between'>
-      {statistics.map((statistic) => (
-        <div
-          key={statistic.data}
-          className='flex items-center justify-center gap-6'
-        >
-          {/* Gantikan berdasarkan type */}
-          {statistic.type === 'project' && (
-            <div className='flex justify-center max-sm:h-26 max-sm:w-47'>
-              <Image
-                src='/images/folder.png'
-                alt='iconProject'
-                loading='lazy'
-                width={92}
-                height={104}
-                className='max-sm:ml-6'
-              />
-            </div>
-          )}
-          {statistic.type === 'client' && (
-            <div className='mt-3 flex -space-x-3 overflow-hidden'>
-              {contributors.map((user, index) => (
-                <Image
-                  key={index}
-                  className='inline-block h-12 w-12'
-                  src={user.avatarUrl}
-                  alt='avatar'
-                  loading='lazy'
-                  width={48}
-                  height={48}
-                />
-              ))}
-            </div>
-          )}
+    <div className='flex flex-wrap space-y-6 py-10 md:space-x-6'>
+      <div className='flex-1'>
+        <div className='md:flex-center flex shrink-0 items-center md:gap-6'>
+          <div className='mx-8 md:mx-0'>
+            <Image
+              src='/images/folder.png'
+              alt='iconProject'
+              loading='lazy'
+              width={82}
+              height={94}
+              className='pointer-events-none'
+            />
+          </div>
 
-          <div className='flex-1'>
-            <p className='display-md-bold md:display-lg-bold text-neutral-950'>
-              {statistic.data}
-            </p>
-            <p className='text-sm-regular md:text-md-regular text-neutral-800'>
-              {statistic.info}
+          <div className='flex flex-col items-start py-4 pr-6 pl-6 text-left md:pl-0'>
+            <CountUp
+              end={200}
+              duration={1000}
+              suffix='+'
+              className='display-md-bold min-[1024px]:display-lg-bold text-neutral-950'
+            />
+            <p className='text-sm-regular min-[1024px]:text-md-regular whitespace-nowrap text-neutral-800'>
+              Project Completed
             </p>
           </div>
         </div>
-      ))}
+      </div>
+      <div className='flex-1.3'>
+        <div className='flex items-center'>
+          {statistics.map((statistic) => (
+            <div
+              key={statistic.data}
+              className='flex items-center justify-center md:py-6'
+            >
+              {statistic.type === 'client' && (
+                <div className='flex -space-x-3 overflow-hidden'>
+                  {contributors.map((user, index) => (
+                    <Image
+                      key={index}
+                      className='pointer-events-none inline-block min-[1024px]:w-17'
+                      src={user.avatarUrl}
+                      alt='avatar'
+                      loading='lazy'
+                      width={40}
+                      height={40}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+          <div className='flex flex-col items-start pl-6 text-left'>
+            <CountUp
+              end={50}
+              duration={1000}
+              suffix='+'
+              className='display-md-bold min-[1024px]:display-lg-bold text-neutral-950'
+            />
+            <p className='text-sm-regular min-[1024px]:text-md-regular whitespace-nowrap text-neutral-800'>
+              Happy Clients
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

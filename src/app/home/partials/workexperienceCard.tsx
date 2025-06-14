@@ -43,7 +43,7 @@ export const WorkexperienceCards = () => {
                     loading='lazy'
                     width={32}
                     height={32}
-                    className='mb-1.5'
+                    className='pointer-events-none mb-1.5'
                   />
                   <p className='text-md-medium md:text-lg-medium text-neutral-950'>
                     {item.company}

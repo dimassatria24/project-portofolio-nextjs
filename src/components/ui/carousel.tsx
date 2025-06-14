@@ -159,7 +159,7 @@ function CarouselItem({ className, ...props }: React.ComponentProps<'div'>) {
         'shrink-0 grow-0 px-3',
         // Desktop: 2 kolom, Mobile: 1 kolom, tapi kita stack dengan isi 2 item secara vertikal
         'basis-full md:basis-1/3',
-        'flex flex-col gap-4',
+        'flex flex-col',
         className
       )}
       {...props}
@@ -211,7 +211,7 @@ function CarouselNavigation({
 }: React.ComponentProps<'div'>) {
   return (
     <div
-      className={cn('mt-6 flex items-center justify-center gap-3', className)}
+      className={cn('flex items-center justify-center gap-3', className)}
       {...props}
     >
       <CarouselPrevious />

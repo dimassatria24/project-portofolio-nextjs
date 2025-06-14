@@ -61,7 +61,7 @@ const Footer = () => {
         />
 
         {/* Footer Info */}
-        <div className='pointer-events-none absolute top-50 left-1/2 grid w-full -translate-x-1/2 grid-cols-1 place-items-center object-cover min-md:top-20 md:space-y-10'>
+        <div className='absolute top-50 left-1/2 grid w-full -translate-x-1/2 grid-cols-1 place-items-center object-cover min-md:top-20 md:space-y-10'>
           <Image
             src='/icons/Logo.svg'
             alt='Logo'
@@ -77,7 +77,7 @@ const Footer = () => {
           </p>
 
           {/* Social Media Icons */}
-          <div className='flex-start gap-4'>
+          <div className='flex-start cursor-pointer gap-4'>
             {socialMediaData.map((icon) => (
               <Link
                 key={icon.alt}

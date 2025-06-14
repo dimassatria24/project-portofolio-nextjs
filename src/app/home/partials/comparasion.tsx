@@ -28,7 +28,7 @@ const Comparison = () => {
                 loading='lazy'
                 width={89}
                 height={89}
-                className='size-17 md:size-22'
+                className='pointer-events-none size-17 md:size-22'
               />
             </div>
           </div>
@@ -58,7 +58,7 @@ const Comparison = () => {
                 loading='lazy'
                 width={150}
                 height={150}
-                className='size-15 md:size-18'
+                className='pointer-events-none size-15 md:size-18'
               />
             </div>
           </div>

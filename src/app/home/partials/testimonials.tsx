@@ -61,7 +61,7 @@ const TestimonialCard: FC<TestimonialCardProps> = ({
         loading='lazy'
         width={66}
         height={24}
-        className='md:h-12 md:w-33 md:group-hover:brightness-0 md:group-hover:invert'
+        className='pointer-events-none md:h-12 md:w-33 md:group-hover:brightness-0 md:group-hover:invert'
       />
 
       {/* Quote Icon */}
@@ -71,7 +71,7 @@ const TestimonialCard: FC<TestimonialCardProps> = ({
         loading='lazy'
         width={32}
         height={32}
-        className='mt-8 md:mt-12 md:size-12 md:group-hover:brightness-0 md:group-hover:invert'
+        className='pointer-events-none mt-8 md:mt-12 md:size-12 md:group-hover:brightness-0 md:group-hover:invert'
       />
 
       {/* Impression */}
@@ -87,7 +87,7 @@ const TestimonialCard: FC<TestimonialCardProps> = ({
           loading='lazy'
           width={60}
           height={60}
-          className='rounded-full'
+          className='pointer-events-none rounded-full'
         />
         <div>
           <h3 className='text-sm-semibold md:text-md-semibold md:group-hover:text-neutral-25 text-neutral-950'>

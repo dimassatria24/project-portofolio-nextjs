@@ -59,13 +59,14 @@ const Hero = () => {
             design. Turning ideas into functional beauty
           </p>
         </div>
-        <div className='custom-container flex-between pointer-events-auto absolute right-0 bottom-10 left-0 z-40 w-full md:bottom-40'>
+        <div className='custom-container flex-between absolute right-0 bottom-10 left-0 z-40 w-full cursor-pointer md:bottom-40'>
           <div className='flex gap-4'>
             {socialMediaData.map((icon) => (
               <Link
                 key={icon.alt}
                 href={icon.href}
-                className='flex-center md-size-15 pointer-events-none size-12 rounded-full bg-neutral-950/50 p-3'
+                target='_blank'
+                className='flex-center md-size-15 size-12 rounded-full bg-neutral-950/50 p-3'
               >
                 <Image
                   src={icon.src}
