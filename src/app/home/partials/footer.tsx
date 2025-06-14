@@ -40,7 +40,7 @@ const Footer = () => {
       />
 
       {/* Footer Main Content */}
-      <div className='relative -mt-3 h-113 w-full bg-neutral-950 object-cover'>
+      <div className='relative -mt-3 h-125 w-full bg-neutral-950 object-cover'>
         {/* Background Images */}
         <Image
           src='/images/Line.png'
@@ -61,7 +61,7 @@ const Footer = () => {
         />
 
         {/* Footer Info */}
-        <div className='pointer-events-none absolute top-60 left-1/2 grid w-full -translate-x-1/2 -translate-y-1/2 grid-cols-1 place-items-center object-cover md:top-45 md:space-y-10'>
+        <div className='pointer-events-none absolute top-50 left-1/2 grid w-full -translate-x-1/2 grid-cols-1 place-items-center object-cover min-md:top-20 md:space-y-10'>
           <Image
             src='/icons/Logo.svg'
             alt='Logo'

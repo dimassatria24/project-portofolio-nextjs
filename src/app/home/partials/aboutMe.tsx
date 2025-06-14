@@ -8,7 +8,10 @@ import {
 
 const AboutMe = () => {
   return (
-    <div className='custom-container relative z-50 mt-5 flex flex-wrap items-center gap-10 md:gap-16'>
+    <div
+      id='about'
+      className='custom-container relative z-50 mt-5 flex flex-wrap items-center gap-10 md:gap-16'
+    >
       {/* ProjectCard */}
       <div className='bg-primary-100 flex-[1.8] basis-85 gap-3 space-y-4 rounded-2xl p-4 max-sm:mt-10 md:rounded-3xl'>
         {aboutmeProjectCardData.map((card) => (

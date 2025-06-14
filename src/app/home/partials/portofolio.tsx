@@ -62,7 +62,7 @@ export function Portofolios({ className }: { className?: string }) {
   }
 
   return (
-    <Section title='PORTOFOLIO' subtitle='Latest Project'>
+    <Section id='projects' title='PORTOFOLIO' subtitle='Latest Project'>
       <div className={cn('relative w-full', className)}>
         <div
           ref={containerRef}

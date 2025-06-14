@@ -9,6 +9,7 @@ import { ComparasionDataSkills } from '@/constants/comparasion-data';
 const Comparison = () => {
   return (
     <Section
+      id='skills'
       title='COMPARISON'
       subtitle='Why I Stand Out'
       className='bg-gradient-to-t from-[#F3EBFF]'

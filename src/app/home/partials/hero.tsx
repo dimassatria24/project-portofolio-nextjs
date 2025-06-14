@@ -11,7 +11,7 @@ import { socialMediaData } from '@/constants/social-media-data';
 
 const Hero = () => {
   return (
-    <header className='bg-base-black md:custom-container w-full'>
+    <header id='home' className='bg-base-black md:custom-container w-full'>
       <div className='relative mx-auto h-185 md:h-315'>
         <Image
           src='/images/bgherogra.png'

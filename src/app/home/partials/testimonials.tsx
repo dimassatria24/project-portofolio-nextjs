@@ -17,7 +17,7 @@ const Testimonials = () => {
     <Section
       title='TESTIMONIALS'
       subtitle='What Our Clients Say'
-      id='testimonial'
+      id='testimonials'
     >
       <Carousel>
         <CarouselContent>
