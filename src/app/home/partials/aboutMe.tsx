@@ -11,7 +11,7 @@ const AboutMe = () => {
   return (
     <div
       id='about'
-      className='custom-container relative z-50 mt-5 flex flex-wrap items-center gap-10 md:gap-16'
+      className='custom-container relative z-50 mt-5 flex flex-wrap items-center gap-10'
     >
       {/* ProjectCard */}
       <div className='bg-primary-100 flex-[1.8] basis-85 gap-3 space-y-4 rounded-2xl p-4 max-sm:mt-10 md:rounded-3xl'>
@@ -81,10 +81,10 @@ const statistics: Statistic[] = [
 
 export const Statistics = () => {
   return (
-    <div className='flex flex-wrap space-y-6 py-10 md:space-x-6'>
+    <div className='flex-center flex-col space-y-6 py-10 md:flex-row md:space-x-6'>
       <div className='flex-1'>
-        <div className='md:flex-center flex shrink-0 items-center md:gap-6'>
-          <div className='mx-8 md:mx-0'>
+        <div className='md:flex-center flex items-center md:gap-6'>
+          <div className='mx-18 md:mx-0'>
             <Image
               src='/images/folder.png'
               alt='iconProject'
@@ -95,7 +95,7 @@ export const Statistics = () => {
             />
           </div>
 
-          <div className='flex flex-col items-start py-4 pr-6 pl-6 text-left md:pl-0'>
+          <div className='flex flex-col items-start py-4 pl-6 text-left md:pl-0'>
             <CountUp
               end={200}
               duration={1000}
@@ -108,7 +108,7 @@ export const Statistics = () => {
           </div>
         </div>
       </div>
-      <div className='flex-1.3'>
+      <div className='flex-[1.7] shrink-0'>
         <div className='flex items-center'>
           {statistics.map((statistic) => (
             <div
@@ -120,12 +120,12 @@ export const Statistics = () => {
                   {contributors.map((user, index) => (
                     <Image
                       key={index}
-                      className='pointer-events-none inline-block min-[1024px]:w-17'
+                      className='pointer-events-none inline-block'
                       src={user.avatarUrl}
                       alt='avatar'
                       loading='lazy'
-                      width={40}
-                      height={40}
+                      width={47}
+                      height={47}
                     />
                   ))}
                 </div>
@@ -137,9 +137,9 @@ export const Statistics = () => {
               end={50}
               duration={1000}
               suffix='+'
-              className='display-md-bold min-[1024px]:display-lg-bold text-neutral-950'
+              className='display-md-bold md:display-lg-bold text-neutral-950'
             />
-            <p className='text-sm-regular min-[1024px]:text-md-regular whitespace-nowrap text-neutral-800'>
+            <p className='text-sm-regular md:text-md-regular whitespace-nowrap text-neutral-800'>
               Happy Clients
             </p>
           </div>

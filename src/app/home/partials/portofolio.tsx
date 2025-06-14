@@ -115,7 +115,7 @@ export function Portofolios({ className }: { className?: string }) {
           ))}
         </div>
 
-        <div className='flex-center pt:6 gap-3 md:gap-4 md:pt-8'>
+        <div className='flex-center gap-3 pt-8 md:gap-4'>
           <Button
             variant='outline'
             size='icon'
