@@ -2,8 +2,9 @@
 
 import emailjs from '@emailjs/browser';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { motion, useInView } from 'framer-motion';
 import { Send } from 'lucide-react';
-import React from 'react';
+import React, { useState, useMemo, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { ClipLoader } from 'react-spinners';
 import { z } from 'zod';
@@ -21,63 +22,108 @@ import FormStatusDialog from '@/components/ui/form-status-dialog';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 
+// ====================
+// Schema
+// ====================
 const contactSchema = z.object({
-  name: z
-    .string({
-      required_error: 'Name is required',
-    })
-    .min(2, 'Name must be at least 2 characters long')
-    .max(50, 'Name must be at most 50 characters long'),
-  email: z
-    .string({
-      required_error: 'Email is required',
-    })
-    .email('Please enter a valid email address'),
+  name: z.string().min(2, 'Name must be at least 2 characters').max(50),
+  email: z.string().email('Enter a valid email'),
   message: z
-    .string({
-      required_error: 'Message is required',
-    })
-    .min(20, 'Message must be at least 20 characters long')
-    .max(500, 'Message must be at most 500 characters long'),
+    .string()
+    .min(20, 'Message must be at least 20 characters')
+    .max(500),
 });
 
-const ContactForm = () => {
-  const [loading, setLoading] = React.useState(false);
+// ====================
+// Reusable Field
+// ====================
+type FieldProps = {
+  name: 'name' | 'email' | 'message';
+  label: string;
+  placeholder: string;
+  as?: 'input' | 'textarea';
+  disabled: boolean;
+  control: any;
+};
 
-  const [showDialog, setShowDialog] = React.useState(false);
-  const [variant, setVariant] = React.useState<'success' | 'error'>('success');
+const Field = ({
+  name,
+  label,
+  placeholder,
+  as = 'input',
+  disabled,
+  control,
+}: FieldProps) => (
+  <FormField
+    control={control}
+    name={name}
+    render={({ field }) => (
+      <FormItem>
+        <FormLabel>{label}</FormLabel>
+        {as === 'textarea' ? (
+          <Textarea {...field} disabled={disabled} placeholder={placeholder} />
+        ) : (
+          <Input {...field} disabled={disabled} placeholder={placeholder} />
+        )}
+        <FormMessage />
+      </FormItem>
+    )}
+  />
+);
+
+// ====================
+// Main Component
+// ====================
+const ContactForm = () => {
+  const [loading, setLoading] = useState(false);
+  const [dialog, setDialog] = useState({
+    open: false,
+    variant: 'success' as 'success' | 'error',
+  });
+
+  const defaultValues = useMemo(
+    () => ({ name: '', email: '', message: '' }),
+    []
+  );
 
   const form = useForm<z.infer<typeof contactSchema>>({
     resolver: zodResolver(contactSchema),
-    defaultValues: {
-      name: '',
-      email: '',
-      message: '',
-    },
+    defaultValues,
   });
 
-  async function onSubmit(data: z.infer<typeof contactSchema>) {
+  const onSubmit = async (data: z.infer<typeof contactSchema>) => {
+    setLoading(true);
     try {
-      setLoading(true);
       await emailjs.send(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
-        {
-          name: data.name,
-          email: data.email,
-          message: data.message,
-        },
+        data,
         process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
       );
       form.reset();
-      setVariant('success');
+      setDialog({ open: true, variant: 'success' });
     } catch (error) {
-      console.error('Error sending email:', error);
+      console.error('Email sending failed:', error);
+      setDialog({ open: true, variant: 'error' });
     } finally {
-      setShowDialog(true);
       setLoading(false);
     }
-  }
+  };
+
+  // ====================
+  // Animation Setup
+  // ====================
+  const ref = useRef(null);
+  const isInView = useInView(ref, {
+    once: false,
+    margin: '0px 0px -100px 0px',
+  });
+
+  const animationProps = {
+    initial: { opacity: 0, y: 40 },
+    animate: isInView ? { opacity: 1, y: 0 } : {},
+    transition: { duration: 0.6, ease: 'easeOut' },
+  };
 
   return (
     <Section
@@ -86,73 +132,51 @@ const ContactForm = () => {
       id='contact'
       className='relative z-10'
     >
-      <Form {...form}>
-        <form
-          className='bg-neutral-25 relative z-50 mx-auto flex h-full max-w-150 flex-col space-y-4 rounded-xl border p-8 md:rounded-2xl'
-          onSubmit={form.handleSubmit(onSubmit)}
-        >
-          <FormField
-            control={form.control}
-            name='name'
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Name</FormLabel>
-                <Input
-                  disabled={loading}
-                  placeholder='Input your name'
-                  {...field}
-                />
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name='email'
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Email</FormLabel>
-                <Input
-                  disabled={loading}
-                  placeholder='Input your email'
-                  {...field}
-                />
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name='message'
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Message</FormLabel>
-                <Textarea
-                  disabled={loading}
-                  placeholder='Input your message'
-                  {...field}
-                />
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <Button
-            disabled={loading}
-            className='md:text-md-text-md-medium text-sm-medium w-full md:mt-4'
+      <motion.div ref={ref} {...animationProps}>
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className='bg-neutral-25 mx-auto flex max-w-150 flex-col space-y-4 rounded-xl border p-8 md:rounded-2xl'
           >
-            <Send size={16} className='mx-2' />
-            {loading ? <ClipLoader size={20} color='#fff' /> : 'Submit'}
-          </Button>
-        </form>
-      </Form>
+            <Field
+              name='name'
+              label='Name'
+              placeholder='Input your name'
+              disabled={loading}
+              control={form.control}
+            />
+            <Field
+              name='email'
+              label='Email'
+              placeholder='Input your email'
+              disabled={loading}
+              control={form.control}
+            />
+            <Field
+              name='message'
+              label='Message'
+              placeholder='Input your message'
+              as='textarea'
+              disabled={loading}
+              control={form.control}
+            />
+
+            <Button
+              disabled={loading}
+              className='text-sm-medium md:text-md-medium w-full md:mt-4'
+            >
+              <Send size={16} className='mx-2' />
+              {loading ? <ClipLoader size={20} color='#fff' /> : 'Submit'}
+            </Button>
+          </form>
+        </Form>
+      </motion.div>
+
       <FormStatusDialog
-        open={showDialog}
-        variant={variant}
+        open={dialog.open}
+        variant={dialog.variant}
         loading={loading}
-        onOpenChange={setShowDialog}
+        onOpenChange={(open) => setDialog((prev) => ({ ...prev, open }))}
       />
     </Section>
   );

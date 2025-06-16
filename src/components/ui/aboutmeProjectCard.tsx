@@ -1,4 +1,7 @@
+'use client';
+
 import { Icon } from '@iconify/react';
+import { motion } from 'framer-motion';
 
 type AboutmeProjectCard = {
   iconName: string;
@@ -28,27 +31,56 @@ export const aboutmeProjectCardData: AboutmeProjectCard[] = [
   },
 ];
 
-export const AboutmeProjectCards: React.FC<AboutmeProjectCard> = ({
+// Animasi masuk saat komponen muncul di viewport
+const fadeUpVariant = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.1,
+      duration: 0.5,
+      ease: 'easeOut',
+    },
+  }),
+};
+
+type Props = AboutmeProjectCard & {
+  index: number;
+};
+
+export const AboutmeProjectCardItem: React.FC<Props> = ({
   iconName,
   iconBgClass,
   title,
   description,
+  index,
 }) => {
   return (
-    <div className='bg-base-white flex rounded-xl p-4 md:rounded-2xl md:p-6'>
+    <motion.div
+      custom={index}
+      variants={fadeUpVariant}
+      initial='hidden'
+      whileInView='visible'
+      viewport={{ once: false, amount: 0.4 }}
+      className='bg-base-white flex rounded-xl p-4 md:rounded-2xl md:p-6'
+    >
+      {/* Icon */}
       <div
         className={`${iconBgClass} flex-center relative size-12 rounded-full p-3 md:size-16 [&>*]:h-auto [&>*]:w-full`}
       >
-        <Icon icon={iconName} width='24' height='24' />
+        <Icon icon={iconName} width={24} height={24} />
       </div>
-      <div className='ml-4 flex-1 items-center justify-center'>
+
+      {/* Text */}
+      <div className='ml-4 flex flex-1 flex-col justify-center'>
         <h3 className='text-md-semibold md:text-lg-semibold text-neutral-950'>
           {title}
         </h3>
-        <p className='md:text-md-regular text-sm-regular mt-0.5 text-neutral-500 md:mt-1'>
+        <p className='text-sm-regular md:text-md-regular mt-0.5 text-neutral-500 md:mt-1'>
           {description}
         </p>
       </div>
-    </div>
+    </motion.div>
   );
 };

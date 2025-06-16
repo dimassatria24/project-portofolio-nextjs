@@ -1,8 +1,9 @@
+// Ubah di WorkExperienceCard.tsx
 export type WorkExperience = {
   id: number;
   year: string;
   jobTitle: string;
-  logoCompany: string; // ganti dari StaticImageData
+  logoCompany: string; // ← dari StaticImageData jadi string
   company: string;
   jobDescription: string;
 };
