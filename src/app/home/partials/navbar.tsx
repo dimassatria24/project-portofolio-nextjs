@@ -71,7 +71,7 @@ const Navbar = () => {
       <div className='flex-between custom-container h-20 w-full md:h-21.5'>
         <Link href='#home'>
           <Image
-            src='/icons/Logo.svg'
+            src='/icons/mylogo.png'
             alt='logo'
             width={141}
             height={32}
@@ -118,7 +118,7 @@ const Navbar = () => {
             <SheetHeader>
               <Link href='#home'>
                 <Image
-                  src='/icons/Logoblack.png'
+                  src='/icons/mylogo.png'
                   alt='logo'
                   width={141}
                   height={32}

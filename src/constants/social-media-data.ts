@@ -8,24 +8,26 @@ export type SocialMedia = {
 
 export const socialMediaData: SocialMedia[] = [
   {
-    href: 'https://dribbble.com/',
-    alt: 'Dribbble',
-    src: '/icons/companyLogo/Icondribble.svg',
+    href: 'https://www.linkedin.com/in/dimas-satria-45a343386/',
+    alt: 'LinkedIn',
+    src: '/icons/companyLogo/IconLinkedin.svg',
     width: 24,
     height: 24,
   },
+
   {
-    href: 'https://instagram.com/',
+    href: 'https://www.instagram.com/dimas240595/',
     alt: 'Instagram',
     src: '/icons/companyLogo/Iconinstagram.svg',
     width: 24,
     height: 24,
   },
+
   {
-    href: 'https://linkedin.com/',
-    alt: 'LinkedIn',
-    src: '/icons/companyLogo/IconLinkedin.svg', // ✅ Pastikan tidak typo!
-    width: 24,
-    height: 24,
+    href: 'https://www.facebook.com/DmsDayzukeLARCENCIEL/',
+    alt: 'Facebook',
+    src: '/icons/companyLogo/facebook-icon.svg',
+    width: 30,
+    height: 30,
   },
 ];

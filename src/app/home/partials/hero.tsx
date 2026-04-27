@@ -48,7 +48,7 @@ const Hero = () => {
             className='pointer-events-none absolute bottom-0 left-1/2 w-full -translate-x-1/2 object-cover'
           />
           <Image
-            src='/images/profile.png'
+            src='/images/myprofile.png'
             alt='Profile Picture'
             width={754}
             height={754}
@@ -78,7 +78,7 @@ const Hero = () => {
           >
             Hey There,
             <br />
-            I’m Edwin Anderson
+            I’m Dimas Satria
           </motion.h1>
 
           <motion.p

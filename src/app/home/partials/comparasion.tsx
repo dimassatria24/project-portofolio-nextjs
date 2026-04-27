@@ -139,10 +139,10 @@ const Comparison = () => {
       <div className='from-neutral-15 flex flex-col items-center justify-center gap-6 bg-gradient-to-b md:flex-row'>
         <ComparisonCard
           title='With Me'
-          imageSrc='/images/Casual.png'
+          imageSrc='/images/myprofile.png'
           alt='With Me Illustration'
           points={withMePoints}
-          icon={<Check className='text-base-white' size={16} />}
+          icon={<Check className='text-base-white' size={20} />}
           bgClass='bg-linear-to-l from-gra-blue to-gra-purple'
           textColor='text-neutral-25'
           animationDelay={0.1}
