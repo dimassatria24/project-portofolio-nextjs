@@ -63,12 +63,11 @@ const Footer = () => {
         {/* Footer Info */}
         <div className='absolute top-50 left-1/2 grid w-full -translate-x-1/2 grid-cols-1 place-items-center object-cover min-md:top-20 md:space-y-10'>
           <Image
-            src='/icons/Logo.svg'
+            src='/icons/mylogo.png'
             alt='Logo'
             loading='lazy'
-            width={138}
+            width={141}
             height={32}
-            className='h-30 w-35 md:h-12 md:w-52'
           />
 
           <p className='custom-container md:text-md-regular text-neutral-25 text-sm-regular mb-8 text-center'>
